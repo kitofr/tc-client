@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
+require 'tc-client'
+
+if ARGV.length != 1
+  puts "Usage: #{File.basename(__FILE__)} [build project]"
+  puts "Available builds:"
+  puts projects.keys.sort
+  Process.exit
+end
+
+client = TCClient.new(ARGV[0])
+puts client.builds

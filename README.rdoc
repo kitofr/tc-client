@@ -1,0 +1,22 @@
+TCClient
+------
+A simple ruby based Team City build checker. 
+
+Installation
+------------
+* gem install tc-client
+* Create a file in your home directory (i.e. ~ on linux) called .tc-client
+
+Add in:
+  user:				<user-name>
+  pwd:				<password>
+  base_url:		<url to team city instance (servername and port)>
+	
+	projects:
+		<short name> : <build target number>
+		... 
+		<short name n> : <build target number n>
+
+Usage
+-----
+  tc-client [short name]
