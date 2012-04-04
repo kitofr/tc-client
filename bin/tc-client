@@ -3,15 +3,17 @@
 $LOAD_PATH.unshift File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'tc-client'
 
-client = TCClient.new(true)
+client = TCClient.new(false)
 
 case ARGV.length
 when 1 then
-  puts "Available builds on #{ARGV[0]}: "
-  puts client.builds(ARGV[0]).map { |x| x[:name] }
+  builds = client.builds(ARGV[0])
+  puts "Available builds on #{builds[:project_name]}: "
+  puts builds[:builds].map { |x| x[:name] }
 when 2
-  puts "Last 10 builds on #{ARGV[0]} [#{ARGV[1]}]: "
-  client.statuses(ARGV[0], ARGV[1]).each do |x|
+  statuses = client.statuses(ARGV[0], ARGV[1])
+  puts "Last 10 builds on #{statuses[:project_name]} '#{statuses[:build_name]}': "
+  statuses[:statuses].each do |x|
     puts "#{x[:build]} (#{x[:status]})"
   end
 else
