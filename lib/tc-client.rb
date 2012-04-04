@@ -23,15 +23,17 @@ class TCClient
   end
 
   def builds(project)
-    p = projects.select{|x| x[:name] == project}.first[:href]
-    xml = get(p)
+    p = projects.select{|x| x[:name].match /#{project}/i }
+    return [{:name => "Can't find a project matching '#{project}'"}] if p.empty?
+    xml = get(p.first[:href])
     doc = REXML::Document.new xml
     doc.elements.collect("project/buildTypes/buildType") { |b| { :name => b.attributes["name"], :href => b.attributes["href"] } }
   end
 
   def statuses(project, build)
-    b = builds(project).select{|x| x[:name] == build}.first[:href]
-    xml = get("#{b}/builds?count=10")
+    b = builds(project).select{|x| x[:name].match /#{build}/i}
+    return [{:build => "Can't find a build matching: '#{build}'", :status => "FATAL"}] if b.empty?
+    xml = get("#{b.first[:href]}/builds?count=10")
     doc = REXML::Document.new xml
     doc.elements.collect("builds/build") {|x| { :build => x.attributes["number"], :status => x.attributes["status"] } } 
   end

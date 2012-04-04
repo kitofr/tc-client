@@ -3,7 +3,7 @@
 $LOAD_PATH.unshift File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'tc-client'
 
-client = TCClient.new(false)
+client = TCClient.new(true)
 
 case ARGV.length
 when 1 then
