@@ -2,8 +2,31 @@
 
 $LOAD_PATH.unshift File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'tc-client'
+require 'optparse'
 
-client = TCClient.new(false)
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: tc-client <project name> <build name> [options]"
+
+  opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
+    options[:verbose] = v
+  end
+
+  opts.separator "" 
+  opts.separator "Common tasks" 
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+
+  opts.on_tail("--version", "Show version") do
+    require 'version'
+    puts "TCClient v#{TCClient::Version}"
+    exit
+  end
+end.parse!
+
+client = TCClient.new(options[:verbose])
 
 case ARGV.length
 when 1 then

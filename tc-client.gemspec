@@ -5,7 +5,7 @@ require "version"
 
 Gem::Specification.new do |s|
   s.name        = "tc-client"
-  s.version     = TCClient::VERSION
+  s.version     = TCClient::Version
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Kristoffer Roupe"]
   s.email       = ["kitofr@gmail.com"]
