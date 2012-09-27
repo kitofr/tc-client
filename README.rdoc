@@ -1,9 +1,8 @@
-TCClient
---------
+{<img src="https://codeclimate.com/badge.png" />}[https://codeclimate.com/github/kitofr/tc-client]
+=TCClient
 A simple ruby based Team City build checker. 
 
-Installation
-------------
+=Installation
 * gem install tc-client
 * Create a file in your home directory (i.e. ~ on linux) called .tc-client
 
@@ -17,8 +16,6 @@ Add in:
 		... 
 		<short name n> : <build target number n>
 
-Usage
------
+=Usage
   tc-client [short name]
 
-{<img src="https://codeclimate.com/badge.png" />}[https://codeclimate.com/github/kitofr/tc-client]
