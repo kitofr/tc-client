@@ -1,4 +1,6 @@
 {<img src="https://codeclimate.com/badge.png" />}[https://codeclimate.com/github/kitofr/tc-client]
+{<img src="https://badge.fury.io/rb/tc-client.png" alt="Gem Version" />}[http://badge.fury.io/rb/tc-client]
+
 =TCClient
 A simple ruby based Team City build checker. 
 
